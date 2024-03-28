@@ -77,6 +77,8 @@ inline bool sfml_gui_create(SfmlGui* gui, const char* title,
     assert(gui != nullptr);
     
     gui->window.create(sf::VideoMode(width, height), title);
+    gui->window.setFramerateLimit(60);
+    
     gui->texture.create(width, height);
     gui->sprite.setTexture(gui->texture);
     
@@ -91,10 +93,8 @@ inline bool sfml_gui_create(SfmlGui* gui, const char* title,
     gui->text.setCharacterSize(text.font_size);
     gui->text.setFillColor(text.color);
     
-    if (!sfml_gui_set_font(gui, text.font_name)) {
-        fprintf(stderr, "WARNING: could not load font\n");
+    if (!sfml_gui_set_font(gui, text.font_name))
         return false;
-    }
 
     return true;
 }
