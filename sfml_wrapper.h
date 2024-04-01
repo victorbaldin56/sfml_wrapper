@@ -77,7 +77,7 @@ inline bool sfml_gui_create(SfmlGui* gui, const char* title,
 {
     assert(gui != nullptr);
 
-    gui->window.create(sf::VideoMode(width, height), title);
+    gui->window.create(sf::VideoMode(width, height), title, sf::Style::Close);
     gui->window.setFramerateLimit(60);
 
     gui->texture.create(width, height);
